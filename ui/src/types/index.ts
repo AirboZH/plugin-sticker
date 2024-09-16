@@ -52,5 +52,17 @@ export interface StickerGroupSpec {
 }
 
 export interface StickerGroupStatus {
+  stickerCount?: number;
   isDelete?: boolean;
+}
+
+export interface Page<T> {
+  page: number;
+  size: number;
+  total: number;
+  items: Array<T>;
+  first: boolean;
+  last: boolean;
+  hasNext: boolean;
+  hasPrevious: boolean;
 }
