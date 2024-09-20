@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@formkit/core':
-        specifier: ^1.6.6
-        version: 1.6.6
+        specifier: 1.0.0-beta.12
+        version: 1.0.0-beta.12
       '@halo-dev/api-client':
         specifier: ^2.17.0
         version: 2.17.0(axios@1.7.2)
@@ -490,11 +490,11 @@ packages:
   '@floating-ui/utils@0.1.6':
     resolution: {integrity: sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==}
 
-  '@formkit/core@1.6.6':
-    resolution: {integrity: sha512-UtvjxSHmU69FpOJPrE37buhpVSsIccwtnmEZz8HvXEFTeZa85WUATZnMWEV33Hzv9uUJrVikbEvXLfh30yjPsw==}
+  '@formkit/core@1.0.0-beta.12':
+    resolution: {integrity: sha512-/Pod7k4N58eDOG+0LE0ccV7BOYD5sEA4RqaRNJn9m6Jg9nF/JATmSNL46kVCH3mV6sSoV045L3Zir8//rya0Lw==}
 
-  '@formkit/utils@1.6.6':
-    resolution: {integrity: sha512-kHLCQfR5s8HzHkBt0hbqjDWvCmKCXw7FpWxUJ4yK8S+sY5h8QkPfui05uecRY1cQQhcS5LtKhRMmMSlL6+E8Hg==}
+  '@formkit/utils@1.0.0-beta.12':
+    resolution: {integrity: sha512-L2P221teC+58Y1A4TZpJsLt/Y+WErLxbBt4hH6XhokssVX7mYR56YWienY9StN5jmiGVWtcK1+riXCb0n1aMOA==}
 
   '@halo-dev/api-client@2.17.0':
     resolution: {integrity: sha512-VbMLeL3G1/4sEObWpRffTNEshAoYBYgI4araJOFbCbv81t69bzZVH/F5NRQ34RlwTqlTHTILCY2TWOuiJvY7cw==}
@@ -3166,11 +3166,11 @@ snapshots:
 
   '@floating-ui/utils@0.1.6': {}
 
-  '@formkit/core@1.6.6':
+  '@formkit/core@1.0.0-beta.12':
     dependencies:
-      '@formkit/utils': 1.6.6
+      '@formkit/utils': 1.0.0-beta.12
 
-  '@formkit/utils@1.6.6': {}
+  '@formkit/utils@1.0.0-beta.12': {}
 
   '@halo-dev/api-client@2.17.0(axios@1.7.2)':
     dependencies:

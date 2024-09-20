@@ -18,6 +18,7 @@ import { useRouteQuery } from "@vueuse/router";
 import type { Page, StickerGroup } from "@/types";
 import { useQuery } from "@tanstack/vue-query";
 import { axiosInstance } from "@halo-dev/api-client";
+import GroupEditingModal from "@/components/GroupEditingModal.vue";
 
 const emit = defineEmits<{
   (event: "select", group?: string): void;
@@ -78,11 +79,11 @@ const handleOpenEditingModal = (group?: StickerGroup) => {
 const handleDelete = async (group: StickerGroup) => {
   Dialog.warning({
     title: "确定要删除该分组吗？",
-    description: "将同时删除该分组下的所有图片，该操作不可恢复。",
+    description: "将同时删除该分组下的所有表情，该操作不可恢复。",
     confirmType: "danger",
     onConfirm: async () => {
       try {
-        await axiosInstance.delete(`/apis/console.api.photo.halo.run/v1alpha1/photogroups/${group.metadata.name}`);
+        await axiosInstance.delete(`/apis/storage.halo.run/v1alpha1/stickerGroups/${group.metadata.name}`);
         refetch();
       } catch (e) {
         console.error("Failed to delete photo group", e);
@@ -116,7 +117,7 @@ const handleSelectedClick = (group: StickerGroup) => {
 </script>
 
 <template>
-  <!--  <GroupEditingModal v-model:visible="groupEditingModal" :group="updateGroup" @close="refetch()" />-->
+  <GroupEditingModal v-model:visible="groupEditingModal" :group="updateGroup" @close="refetch()" />
   <VCard :body-class="['!p-0']" title="分组">
     <VLoading v-if="loading" />
     <Transition v-else-if="!groups || !groups.length" appear name="fade">

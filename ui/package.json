@@ -8,7 +8,7 @@
     "prettier": "prettier --write src/"
   },
   "dependencies": {
-    "@formkit/core": "^1.6.6",
+    "@formkit/core": "1.0.0-beta.12",
     "@halo-dev/api-client": "^2.17.0",
     "@halo-dev/components": "^2.17.0",
     "@halo-dev/console-shared": "^2.17.0",

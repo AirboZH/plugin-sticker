@@ -24,7 +24,7 @@ const emit = defineEmits<{
 }>();
 
 const initialFormState: StickerGroup = {
-  apiVersion: "core.halo.run/v1alpha1",
+  apiVersion: "storage.halo.run/v1alpha1",
   kind: "StickerGroup",
   metadata: {
     name: "",
@@ -68,11 +68,11 @@ const handleCreateOrUpdateGroup = async () => {
     saving.value = true;
     if (isUpdateMode.value) {
       await axiosInstance.put(
-        `/apis/core.halo.run/v1alpha1/StickerGroups/${formState.value.metadata.name}`,
+        `/apis/storage.halo.run/v1alpha1/stickerGroups/${formState.value.metadata.name}`,
         formState.value,
       );
     } else {
-      await axiosInstance.post("/apis/core.halo.run/v1alpha1/StickerGroups", formState.value);
+      await axiosInstance.post("/apis/storage.halo.run/v1alpha1/stickerGroups", formState.value);
     }
     onVisibleChange(false);
   } catch (e) {
@@ -143,7 +143,7 @@ watch(Meta_Enter, (v) => {
             label="分组名称"
             type="text"
             validation="required"
-            help="可根据此名称查询图片"
+            help="可根据此名称查询表情"
           ></FormKit>
         </div>
       </div>
