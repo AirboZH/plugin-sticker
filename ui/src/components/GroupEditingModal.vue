@@ -28,7 +28,7 @@ const initialFormState: StickerGroup = {
   kind: "StickerGroup",
   metadata: {
     name: "",
-    generateName: "photo-group-",
+    generateName: "sticker-group-",
   },
   spec: {
     displayName: "",
@@ -76,7 +76,7 @@ const handleCreateOrUpdateGroup = async () => {
     }
     onVisibleChange(false);
   } catch (e) {
-    console.error("Failed to create photo group", e);
+    console.error("Failed to create sticker group", e);
   } finally {
     saving.value = false;
   }
@@ -91,7 +91,7 @@ const onVisibleChange = (visible: boolean) => {
 
 const handleResetForm = () => {
   formState.value = cloneDeep(initialFormState);
-  reset("photo-group-form");
+  reset("sticker-group-form");
 };
 
 watch(
@@ -109,13 +109,13 @@ const { ControlLeft_Enter, Meta_Enter } = useMagicKeys();
 
 watch(ControlLeft_Enter, (v) => {
   if (v && !isMac) {
-    submitForm("photo-group-form");
+    submitForm("sticker-group-form");
   }
 });
 
 watch(Meta_Enter, (v) => {
   if (v && isMac) {
-    submitForm("photo-group-form");
+    submitForm("sticker-group-form");
   }
 });
 </script>
@@ -123,9 +123,9 @@ watch(Meta_Enter, (v) => {
 <template>
   <VModal :visible="visible" :width="600" :title="modalTitle" @update:visible="onVisibleChange">
     <FormKit
-      id="photo-group-form"
+      id="sticker-group-form"
       v-model="formState.spec"
-      name="photo-group-form"
+      name="sticker-group-form"
       :classes="{ form: 'w-full' }"
       type="form"
       :config="{ validationVisibility: 'submit' }"
@@ -170,7 +170,7 @@ watch(Meta_Enter, (v) => {
     </div>
     <template #footer>
       <VSpace>
-        <VButton type="secondary" @click="submitForm('photo-group-form')">
+        <VButton type="secondary" @click="submitForm('sticker-group-form')">
           提交 {{ `${isMac ? "⌘" : "Ctrl"} + ↵` }}
         </VButton>
         <VButton @click="onVisibleChange(false)">取消 Esc</VButton>
