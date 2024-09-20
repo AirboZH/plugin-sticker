@@ -13,11 +13,11 @@ import {
   VSpace,
   VStatusDot,
 } from "@halo-dev/components";
-import {ref} from "vue";
+import { ref } from "vue";
 import { useRouteQuery } from "@vueuse/router";
-import type {Page, StickerGroup} from "@/types";
-import {useQuery} from "@tanstack/vue-query";
-import {axiosInstance} from "@halo-dev/api-client";
+import type { Page, StickerGroup } from "@/types";
+import { useQuery } from "@tanstack/vue-query";
+import { axiosInstance } from "@halo-dev/api-client";
 
 const emit = defineEmits<{
   (event: "select", group?: string): void;
@@ -37,19 +37,19 @@ const { data: groups, refetch } = useQuery<Array<StickerGroup>>({
     const { data } = await axiosInstance.get<Page<StickerGroup>>("/apis/storage.halo.run/v1alpha1/stickerGroups");
     loading.value = false;
     return data.items
-      .map  ((group) => {
+      .map((group) => {
         if (group.spec) {
           group.spec.sequence = group.spec.sequence || 0;
-        }     
+        }
         return group;
       })
       .sort((a, b) => {
-      return (a.spec?.sequence || 0) - (b.spec?.sequence || 0);
-    });
+        return (a.spec?.sequence || 0) - (b.spec?.sequence || 0);
+      });
   },
   refetchInterval(data) {
-    // const deletingGroups = data?.filter((group) => !!group.metadata.deletionTimestamp);
-    // return deletingGroups?.length ? 1000 : false;
+    const deletingGroups = data?.filter((group) => !!group.metadata.deletionTimestamp);
+    return deletingGroups?.length ? 1000 : false;
   },
   onSuccess(data) {
     if (selectedGroup.value) {
@@ -116,7 +116,7 @@ const handleSelectedClick = (group: StickerGroup) => {
 </script>
 
 <template>
-<!--  <GroupEditingModal v-model:visible="groupEditingModal" :group="updateGroup" @close="refetch()" />-->
+  <!--  <GroupEditingModal v-model:visible="groupEditingModal" :group="updateGroup" @close="refetch()" />-->
   <VCard :body-class="['!p-0']" title="分组">
     <VLoading v-if="loading" />
     <Transition v-else-if="!groups || !groups.length" appear name="fade">
@@ -152,7 +152,7 @@ const handleSelectedClick = (group: StickerGroup) => {
               <template #start>
                 <VEntityField
                   :title="group.spec?.displayName"
-                  :description="`${group.status.stickerCount} 个表情包`"
+                  :description="`${group.status?.stickerCount ?? 0} 个表情包`"
                 ></VEntityField>
               </template>
 
@@ -176,14 +176,8 @@ const handleSelectedClick = (group: StickerGroup) => {
 
     <template v-if="!loading" #footer>
       <Transition appear name="fade">
-<!--          v-permission="['plugin:photos:manage']"-->
-        <VButton
-          block
-          type="secondary"
-          @click="handleOpenEditingModal(undefined)"
-        >
-          新增分组
-        </VButton>
+        <!--          v-permission="['plugin:photos:manage']"-->
+        <VButton block type="secondary" @click="handleOpenEditingModal(undefined)"> 新增分组 </VButton>
       </Transition>
     </template>
   </VCard>

@@ -1,5 +1,7 @@
 package run.halo.sticker.model;
 
+import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -7,8 +9,6 @@ import lombok.ToString;
 import run.halo.app.core.extension.attachment.Constant;
 import run.halo.app.extension.AbstractExtension;
 import run.halo.app.extension.GVK;
-
-import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
 @Data
 @ToString(callSuper = true)
@@ -51,6 +51,8 @@ public class StickerGroup extends AbstractExtension {
 
     @Data
     public static class StickerGroupStatus {
+        private Integer stickerCount;
+
         private Boolean isDelete;
     }
 }
