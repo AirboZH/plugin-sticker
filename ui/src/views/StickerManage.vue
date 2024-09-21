@@ -143,7 +143,7 @@ const {
     if (!selectedGroup.value) {
       return [];
     }
-    const { data } = await axiosInstance.get<Page<Sticker>>("/apis/storage.halo.run/v1alpha1/stickers", {
+    const { data } = await axiosInstance.get<Page<Sticker>>("/apis/console.api.sticker.halo.run/v1alpha1/stickers", {
       params: {
         page: page.value,
         size: size.value,
